@@ -1,0 +1,230 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{verbatim}
+\usepackage{indentfirst}
+\usepackage[hidelinks]{hyperref} %no boxes around links
+\usepackage{xcolor}
+\usepackage{alltt}
+\usepackage{textcomp}
+\usepackage{slashed}
+\usepackage[margin=1in]{geometry}
+\usepackage{esvect}
+\usepackage{titlesec}
+\usepackage{braket}
+\usepackage{tensor}
+\usepackage{cancel}
+\usepackage{color}
+\usepackage{wrapfig}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage[figurename=]{caption} %allows to write labeless-figure number captions
+\usepackage{sidecap}
+\usepackage{graphics}
+\usepackage{multicol}
+\usepackage{lipsum}
+
+
+
+    %tikz packages
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{pgfplots.polar}
+\usetikzlibrary{decorations.markings} 
+% \usepackage{tikz-feynman}
+
+    %write all math in ds
+\everymath{\displaystyle}
+    %allow pagebreaks during displaystyle
+\allowdisplaybreaks
+
+
+    %define new commands
+\newcommand{\declarecommand}[1]{\providecommand{#1}{}\renewcommand{#1}}
+\declarecommand{\ds}{\displaystyle}
+\declarecommand{\nd}{\noindent}
+\declarecommand{\phi}{\varphi}
+    %\declarecommand{\epsilon}{\varepsilon}     made some changes to these
+    \declarecommand{\ve}{\varepsilon}   %       for levi-civita use
+    \declarecommand{\e}{\epsilon}
+\declarecommand{\R}{\mathbb{R}}
+\declarecommand{\del}{\partial}
+\declarecommand{\d}{\delta}
+\declarecommand{\l}{\ell}
+\declarecommand{\L}{\mathcal{L}}
+\declarecommand{\J}{\mathcal{J}}
+\declarecommand{\tr}{\text{tr}}
+\renewcommand{\t}{\text}
+\declarecommand{\1}{\mathbb{1}}
+\DeclareMathOperator{\sech}{sech}
+\declarecommand{\A}{\mathcal{A}}
+
+
+\titleformat{\section}{\large\scshape\raggedright}{}{0em}{} % Section formatting
+
+
+
+    %tag form for hyperrefs
+\newtagform{blue}{\color{blue}(}{)}
+
+
+
+
+%fancy r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+\titleformat{\section}{\large\scshape\raggedright}{}{0em}{} % Section formatting
+
+
+
+\begin{document}
+
+\begin{center}
+    \Large \fontfamily{qag}  \textbf{Analog Audio Distortion (PHY405 Final Project)}\\
+    \vspace{5pt} 
+    \large Friday, April 4, 2025\\
+    \vspace{5pt}
+    Jace Alloway - 1006940802 - alloway1
+\end{center}
+
+\nd \hrulefill
+
+\vspace{10pt}
+
+\nd\fontfamily{qpl}\selectfont \textbf{Collaborators: none. Partner: Jacob Villasana.} 
+
+\vspace{10pt}
+
+\fontfamily{qag} \selectfont 
+
+\nd \textbf{Abstract}
+
+\vspace{5pt}
+
+\fontfamily{qpl}\selectfont Common among musicians (e.g. guitarists and bassists), distortion is an effect which is applied to an instrument to produce a gritty, crunchy sound to an otherwise clean input. Guitarists prefer to use an analog effect circuit, different than that of a digital (something a music producer would use in say, Logic, Ableton or Garageband), because there is zero latency and there can be a large number of additions which can modify the output of the circuit rather than being limited to only a few changes in tone. The general principle of any distortion circuit is the same: an amplifier, a type of clipping, and a tone/volume expression with the use of variable filters. 
+
+The goal of this lab was to attempt to construct a basic distortion circuit taken from a schematic online and apply it to an audio input to produce a distorted output. The idea was to keep the design consistent with guitar circuit regulations (e.g. something you would find at a music store), which is a 9V power source, and 1/4" input and output jacks. Along the way, some adjustments were made to the initial desgin and each section of the circuit was fully understood so that a more advanced model can be built in the future. After some amplifier and power source adjustments were made, it was found that the circuit worked quite well across a whole range of frequencies. 
+
+
+
+\vspace{10pt}
+
+
+\fontfamily{qag} \selectfont 
+
+\nd \textbf{Design}
+
+\vspace{5pt}
+
+\fontfamily{qpl}\selectfont The circuit design was taken from an online source and was designed by Brian Wampler [1]. The original circuit consists of 6 sections: an input section, a +4.5V DC offset via voltage divider, a variable non-inverting amplifier, an internal soft-clipping section, a variable lowpass filter (e.g. tone), and a variable voltage output (e.g. volume).   
+
+Due to some initial impatience when building the circuit (which is discussed later), we chose to scrap the idea of implementing a +4.5V offset via a voltage divider and just power the op-amp with +4.5V, -4.5V respectively (we had trouble with the op-amp and could not properly get the +4.5V offset to work at the input). The reason why this is done in the initial design is because a battery cannot supply a negative voltage. If the op-amp is powered with +9V on the positive end and grounded at the other, we require a +4.5V offset to the input to achieve amplification (4.5V difference on either end). Otherwise, offsetting everything by -4.5V requires us to power the op-amp with $\pm$4.5V, which can not be done with a regular 9V battery/power supply. Due to this setback, we had just decided to use the DC power supply in the lab at first and return to this if we had time (we did not). 
+
+The first step in the circuit design was constructing the non-inverting amplifier. According to Wampler, in the absence of any soft-clipping or variable tone filters, the circuit should just operate as an amplifier [1]. The input/outputs were measured using WDE12N-1 Switchcraft 1/4" jacks which were purchased from Long and McQuade and soldered to +/- wires.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=4in]{final-initial.png}
+    \caption*{\textit{[Figure 1] Initial distortion schematic found from [1]. The circuit includes a voltage divider, amplification stage, and a filter/volume stage.}}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=4in]{final-step1.png}
+    \caption*{\textit{[Figure 2] Schematic of our initial layout to design a variable non-inverting amplifier. This was built using a dual audio op-amp, some capacitors to block DC feedback, and a variable potentiometer to adjust gain.}}
+\end{figure}
+
+In the figure above, V1 is the guitar signal emulation. We require a 1k resistor (R1) and a 330n capacitor (C1) at the input because this prevents any DC / AC feedback produced by the op-amp from returning back to the input and damaging it. Capacitors are placed at the output to ground (C4, C5) to ensure no DC offset is returns to the output and damages that as well. The rest of the circuit is a non-inverting amplifier, as discussed in lab sessions. We began using the general purpose op-amp (LF356) then transitioned to the dual-audio op-amp (LM833N) due to the nature of the input. Since POT1 is a variable resistor up to 100k, this means we can achieve a maximum gain of up to $1 + \frac{100'000}{1'000} = 101$ dB. Hence this construction so far is just designed to amplify audio (which it did). 
+
+The next step in the construction was to include a form of soft-clipping within the op-amp. Diodes have a general forward bias of 0.7V. This implies that, in series with the gain potentiometer, the input signal can be clipped then amplified. This would produce a more square-like wave, which would sound distorted. The key to a soft-clip, however, is also implementing a capacitor in series so that the wave is smoothed out between voltage transitions. Hence, all of this is done within the gain loop in series. Since diodes can only clip in one direction, however, this means that we must also place a diode in the opposite direction to account for both the positive and negative currents. The diodes we used were general signal diodes measured to be 0.6$\pm$0.1V in forward bias. The capacitor was chosen based off the initial schematic. The smaller the capacitor, the more soft-clipped the signal would be, since more of the initial signal would be let through. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=4in]{final-step2.png}
+    \caption*{\textit{[Figure 3] Distortion schematic of a gain/soft clipping loop within a non-inverting amplifier feedback circuit. Diodes are biased at 0.6V forward which are then amplified via a potentiometer. This clips the input, amplifies, and smooths it with a capacitor. Gain return was 101 dB.}}
+\end{figure}
+
+An instance of this amplification clipping was recorded from the oscilloscope as well, with the input being a direct sine wave from the wavegen. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=3in]{final-nogain.JPG}
+    \includegraphics[width=3in]{final-justgain.JPG}
+    \caption*{\textit{[Figure 4] Input (yellow) / output (green) sine wave signal going through the distortion clipping non-inverting amplifier loop. (Left) primary, clean signal with no gain. (Right) gain knob adjusted to $100\%$ to show clipping and amplification.}}
+\end{figure}
+
+The next step would be to implement a variable lowpass filter (to adjust between low- and high-end distortion) and a variable output voltage adjustment (volume). This can easily be done with potentiometers and a capacitor, as per early-course discussion. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5in]{final-step3.png}
+    \caption*{\textit{[Figure 5] Distortion schematic with the non-inverting clipping amplifier, with the addition of a variable lowpass filter potentiometer and a volume knob to control the output voltage.}}
+\end{figure}
+
+There were some troubles in choosing POT2 and POT3, since we found that too much of a pot (say, 100k-1Meg) would produce too harsh of a cutoff or not cover the entire range of frequencies. With the C7 capacitor, we found that the larger the capacitor value, the quieter the output signal would be, and this is due to the cutoff frequency. In this case, the cutoff frequency ranges from $\frac{1}{2\pi RC} \approx 31.8$ Hz to $\infty$ as $R$ ranges from 0 to 500. The volume knob is a simple variable voltage track from ground. The small POT3 value was chosen to maximize the amount of output volume while still controlling volume appropriately. 
+
+
+
+\vspace{10pt}
+
+
+\fontfamily{qag} \selectfont 
+
+\nd \textbf{Test Procedures and Discussion}
+
+\vspace{5pt}
+
+\fontfamily{qpl}\selectfont There was minimal data analysis required for this lab, since you must hear the output instead of strictly examining numbers. The input AC (V1) was supplied with direct audio coming from Spotify on a Mac to an audio interface (USB-C, Focusrite Scarlette Solo) 1/4" output. This 1/4" jack was plugged into the circuit input. At the output end, a 1/4" to aux adapter was plugged in. This way we could listen to the audio coming from the output of the circuit. This was done with headphones at one time, then moved to a aux-input JBL speaker. 
+
+It is important to note the expectation of the output. Audio signals come in two types: mono and stereo. Mono audio refers to a single output wave, which is reflected in only hearing the output in one headphone rather than two. Stereo audio contains L and R signals. Since this circuit only contains one input and one output, it is mono in and mono out. There are some circuits with mono/stereo in and outs. The direct test procedure for the circuit was simple: press play on Spotify and try to hear something at the output by adjusting the variable potentiometers within the circuit. 
+
+We had found to make the circuit work very well very easily after constructing it step-by-step, ensuring each section worked as it was supposed to. In this section, we will discuss the two weeks of headache which went into trying to make this circuit work, as well as future improvements. 
+The step-by-step process described was not the initial approach. Our initial approach was to just build the circuit and see if it worked. This was because neither me nor my partner actually understood what the circuit was doing until we spent time breaking it down. 
+
+Our initial design was built as in Figure 1. We began by using the LF356 general purpose op-amp, but each LF356 we tried to use just clipped the initial input signal and did not actually produce a non-inverting amplified output (or maybe it did, but our headphones were fried, or the op-amp was fried, or our soft-clipping loop wasn't built properly. Regardless, we heard static and faint music instead of amplified music). We eventually switched to using a LM833N dual audio op-amp because we deemed that more appropriate for our project and the nature of the AC input. Another problem we enountered was that we kept frying headphones. This was because the +9V DC offset kept overpowering the headphones (they would heat up quickly and hurt our tiny little ears), and due to this frustration we scrapped the voltage divider concept and just chose to power the op-amp directly with the $\pm$ 4.5V from the DC power supply in the lab room instead.
+We continued to play around with this for two weeks, trying different op-amps and diodes, capacitor components and potentiometers but nothing seemed to work. The primary struggle was that we kept breaking components and frying headphones, which was expensive, and therefore set us back a lot. It wasn't until the beginning of the last week we examinined the components of the circuitry and actually tried to understand what it was doing so that we could build it piece by piece. 
+
+Once we knew the non-inverting amplifier was working with the $\pm4.5$V DC power supply and the LM833N dual audio op-amp, the rest of the circuit was quickly constructed. The lab did not have all the components we needed for the design, so we had to problem solve with some other components. This however, led to a setback in making sure our lowpass filter and volume pots spanning the correct ranges of frequencies / voltages that we desired. We initially had a 22n capacitor for the tone filter, but changed it to a 10$\mu$ one because we were finding that with our choice of pot there was barely any output. 
+
+This design can be further improved (but we had seen to run out of time) by implementing toggleable switches (to turn the circuit on and off, essentially creating an amplification by-pass switch) which could be reflected via an LED (on for enabled, off for disabled). We do also believe there are some components which could be improved, such as trying different filters in place of the tone knob so try to achieve different sounds. The next step would be to attempt to use different diodes with different forward bias voltages or different capacitors within the gain feedback loop to attempt to see if different kinds of distortion can be achieved. Lastly, the initial goal of this project was to have all the appropriate pots (industrial pots for music gear) and 1/4" jacks (on-board, not wired) so that all of this can be soldered onto a PCB. This circuit is an easy design but was initially difficult for us to build and understand due to the sensitivity of the components and the nature of the audio input. 
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=6in]{final-circuit.JPG}
+    \caption*{\textit{[Figure 6] Image of the final circuit. Consult the legend for the wire colors. The circuit shows the input and outputs via 1/4" jack, the dual audio op-amp, the gain soft-clipping loop with each diode/capacitor, the lowpass filter pot, and the volume output pot.}}
+\end{figure}
+
+
+\vspace{10pt}
+
+\fontfamily{qag} \selectfont 
+
+\nd \textbf{Conclusion and References}
+
+\vspace{5pt}
+
+\fontfamily{qpl}\selectfont To conclude, analog distortion circuits are widely used within the music community and consist of an amplification, a clipping, and tone components. Each circuit is fully customizeable and does not rely on any latency for audio input/output. In this project, we had followed a simple distortion circuit schematic which is consistent with retail electronics (9V power source, 1/4" in/out) and modified it to adjust for input voltages based off of our accessibility to electronic components. After blowing multiple pairs of (Jacob's) headphones, we had followed the step-by-step construction process to produce a distortion of a guitar signal. Though the circuit may appear simple, it took a while to understand so that we could choose each of the components effectively. The next step in the construction would be to implement a bypass button with an LED, locate some components which can fit the 1/4" directly into the breadboard (so we can actually wire it), and solder the circuit onto a PCB. See video for auditory description of what the circuit is actually doing.
+
+
+
+\vspace{10pt}
+
+
+\begin{enumerate}
+    \item[1.] Wampler, Brian. "How to Design a Basic Overdrive Pedal Circuit". May 2020. \\ 
+    \color{blue} https://www.wamplerpedals.com/blog/latest-news/2020/05/how-to-design-a-basic-overdrive-pedal-circuit/ \color{black}    
+\end{enumerate}
+
+
+\end{document}
