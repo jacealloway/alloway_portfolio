@@ -1,0 +1,457 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{verbatim}
+\usepackage{indentfirst}
+\usepackage[hidelinks]{hyperref} %no boxes around links
+\usepackage{xcolor}
+\usepackage{alltt}
+\usepackage{textcomp}
+\usepackage[margin=0.6in, top=0.8in, bottom=1in, footskip=0.5in]{geometry}
+\usepackage{esvect}
+\usepackage{titlesec}
+\usepackage{braket}
+\usepackage{tensor}
+\usepackage{cancel}
+\usepackage{color}
+\usepackage{wrapfig}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage[figurename=]{caption}%allows to write labeless-figure number captions
+\usepackage{sidecap}
+\usepackage{graphics}
+\usepackage{multicol}
+\usepackage{lipsum}
+\usepackage{url}
+
+
+
+
+%note to self: 'bbold' package ruins real number notation
+% \usepackage{fancyhdr}
+% \pagestyle{fancy} 
+% \renewcommand{\headrulewidth}{0pt} %remove bottom lines of headers
+% \renewcommand{\footrulewidth}{0pt}
+
+
+
+    %tikz packages
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{pgfplots.polar}
+\usetikzlibrary{decorations.markings} 
+
+
+    %write all math in ds
+\everymath{\displaystyle}
+    %allow pagebreaks during displaystyle
+\allowdisplaybreaks
+
+    %define new commands
+\newcommand{\declarecommand}[1]{\providecommand{#1}{}\renewcommand{#1}}
+\declarecommand{\ds}{\displaystyle}
+\declarecommand{\nd}{\noindent}
+\declarecommand{\phi}{\varphi}
+\declarecommand{\epsilon}{\varepsilon}
+\declarecommand{\R}{\mathbb{R}}
+\declarecommand{\del}{\partial}
+\declarecommand{\d}{\delta}
+\declarecommand{\l}{\ell}
+\declarecommand{\L}{\mathcal{L}}
+\declarecommand{\J}{\mathcal{J}}
+
+\DeclareMathOperator{\sech}{sech}
+
+
+\titleformat{\section}{\large\scshape\raggedright}{}{0em}{} % Section formatting
+
+\renewcommand\refname{\textbf{Bibliography}}
+
+
+    %tag form for hyperrefs
+\newtagform{blue}{\color{blue}(}{)}
+
+
+
+
+%fancy r
+\usepackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+\DeclareFontShape{T1}{calligra}{m}{n}{<->s*[2.2]callig15}{}
+
+\newcommand{\scripty}[1]{\ensuremath{\mathcalligra{#1}}}
+
+\titleformat{\section}{\large\scshape\raggedright}{}{0em}{} % Section formatting
+
+
+
+\begin{document}
+
+\begin{center}
+    \Large \fontfamily{qag}  \textbf{A Discussion on the Dynamics of a Marble Pendulum}\\
+    \vspace{5pt} 
+    \large Department of Physics, University of Toronto\\
+    \vspace{5pt}
+    \textit{Jace Alloway}
+\end{center}
+
+\nd \hrulefill
+
+\vspace{15pt}
+
+
+
+
+\fontfamily{qag} \selectfont \textbf{Abstract}
+
+\fontfamily{qpl} \selectfont This work focuses on the verification of pendulum dynamics$^{[1]}$. First identified by Galileo in c.1583$^{[3]}$, a pendulum consists of a swinging body in the presence of a uniform gravitational field. This paper discusses a simple mass-on-string system, which was created using fishing line, epoxy, and smooth marbles of various sizes. The purpose of this paper was to explore and verify certain theoretical models regarding pendulum motion, such as period analysis, decay constants due to damping, and fitting the acquired data to the model $\theta(t) = \theta_0e^{-t/\tau}\cos(\omega t + \phi_0)$. These behaviours were rigorously investigated to eventually conclude that (i) the period of a pendulum is independent of the bob mass $m$ and release angle $\theta_0$,  (ii) the amplitude of pendulum motion exponentially decays, (iii) the nonlinearities in the motion arise from the failure of the small-angle approximation and drag on the mass$^{[2]}$, and (iv) the model of the characteristic damping coefficient in terms of the release angle $\theta_0$ and bob mass $m$ fits the relation $k(m, \theta_0) = (125\pm 1)\times 10^{-7}(\text{m}^2\text{s})\, g\rho/m(1-\cos\theta_0)$. Appropriate error analysis was carried out along with an estimate of the system's asymmetry and $\chi^2_r$ fits.
+
+
+\vspace{5pt}
+
+\nd \hrulefill
+
+\vspace{5pt}
+
+
+
+\begin{multicols}{2}
+
+
+    \fontfamily{qag} \selectfont \textbf{Introduction}
+    
+    \fontfamily{qpl} \selectfont First noted by Italian physicist Galileo in c.1583, a pendulum is a rotating mass in the presence of gravity$^{[3]}$. The most typical kind of pendulum is a simple mass on a string, however numerous variations exist, such as compound (rigid) pendulums, driven pendulums, and damped pendulums. 
+
+    This paper discusses the period analysis and damping effects of a simple mass on string pendulum constructed from marbles and fishing line. It was found that the period approximations made were consistent with acquired and theoretical results (and is therefore independent of the mass $m$ and initial release angle $\theta_0$), that the amplitude decay of a pendulum is exponential, and that the acquired results accurately match the theoretical predication given in Equation (4.2).  
+
+    This work is important because the verification of a well-known and applied law in physics proves that any previously derived mathematical model for simple harmonic motion are still valid.
+
+
+
+
+
+    \vspace{10pt}
+
+    \fontfamily{qag} \selectfont \textbf{Mechanics of a Pendulum}
+    
+    \fontfamily{qpl} \selectfont Mathematically, modelling the motion of a simple mass hanging from a string may not seem challenging, but after further examination can become quickly complicated. Consider first the equations of motion which govern the behaviour of the system. For an undamped pendulum, the equations of motion are only governed by the value of gravity,
+    \[
+        \frac{d^2\theta}{dt^2} + \frac{g}{\l}\sin\theta  = 0 \tag{1}
+    \]
+    \nd which can be determined by Newton's second law. In the presence of damping, a velocity-dependent decay must be accounted for$^{[5]}$, making (1) of the form
+    \[
+        \frac{d^2\theta}{dt^2} + k\frac{d\theta}{dt} + \frac{g}{\l}\sin\theta  = 0. \tag{2}
+    \]
+    
+    Equations (1) and (2) are valid for all angles and require no approximations, so algebraic solutions for explicit motion from which they yield are typically impossible to derive (these are chaotic systems). Rather, to determine solutions, these equations may be solved using the `small angle approximation' method$^{[2]}$. 
+    
+    The small angle approximation requires taking only the first-order term in the Taylor expansion of $\sin\theta$, that is, $\sin\theta\approx\theta$, for $\theta\ll 1$. Under this assumption, equations (1) and (2) become simple second order differential equations
+    \begin{align*}
+        \ddot\theta + \frac{g}{\l}\theta &= 0 \tag{3.1}\\
+        \ddot\theta + k\dot\theta + \frac{g}{\l}\theta &=0 \tag{3.2}
+    \end{align*}
+
+    \nd where a `dot' denotes a time derivative operation. In the case of pendulum modelling, their respective solutions are 
+    \begin{align*}
+        \theta(t) &= A\cos(\omega t+\phi_0) \tag{4.1}\\
+        \theta(t) &= Ae^{-kt/2}\cos\left(\Omega t + \phi_0\right),  \tag{4.2}
+    \end{align*}
+
+    \nd where $\omega^2 = \frac{g}{\l}$, $\Omega = \frac{1}{2}\sqrt{4\omega^2-k^2}$, $k = 2/\tau$ , and $A$ is initial release angle$^{[2]}$.
+
+
+    Generally, for a pendulum with angular frequency $\omega = \sqrt{\frac{g}{\l}}$, the period of the pendulum is similarly given through the $\omega = \frac{2\pi}{T}$ relation, hence \[T = 2\pi\sqrt{\frac{g}{\l}}. \tag{5}\] 
+    
+    Theoretically, then, $T$ is independent of the release angle $\theta_0$, the mass $m$, and any damping terms, which will be investigated throughout the analysis of this experiment. For earth gravity, the approximation $\pi^2\approx g$ may be made$^{[1]}$ so that the period may be written as 
+    \[
+        T\approx 2\sqrt{\l}. \tag{6}  
+    \]
+    
+    Now consider a more sophisticated model, such as the one applied in this experiment. In the experimental setup, the primary source of damping is caused by air resistance on the mass. For small masses, the drag force may be written proportional to the cube of the velocity$^{[5]}$,
+    \[
+        {\bf{F_D}} = \frac{1}{2}\rho \beta |v|^3\, {\boldsymbol{\hat \theta}}, \tag{7}   
+    \]
+    \nd where $\rho$ is the fluid density, $\beta$ is a constant established by physical properties of the mass$^{[2]}$, and $|v| = \l|\dot\theta|$ the absolute speed of the motion relative to the fluid velocity. 
+
+    For thin pendulum strings, the damping torque caused by string motion may be neglected. Instead, considering energy conservation for a pendulum released from initial anngle $\theta_0$,
+    \[
+        m\l^2\dot\theta^2 = mg\l (1-\cos\theta_0) \implies \dot\theta^2 = \frac{2g(1-\cos\theta_0)}{\l}. \tag{8}
+    \]
+    
+    Invoking equation (9) into (8) yields the drag force in terms of fluid velocity and initial release angle:
+    \[
+        F_D = \rho \beta \l^2 g (1-\cos\theta_0) \dot\theta, \tag{9}
+    \] 
+    \nd where it is assumed the force opposes the motion in the $\boldsymbol{\hat \theta}$ direction. 
+
+    The equation of motion for the system may therefore be determined by equation (10): 
+    \begin{align*}
+        F &= F_D + F_G\\
+        \implies m\l^2 \ddot\theta &= -\rho \beta l^2g(1-\cos\theta_0)\dot\theta - \frac{g}{\l}\sin\theta \\
+        \implies \ddot\theta &= -k(m, \theta_0)\dot\theta - \omega^2\sin\theta \tag{10}
+    \end{align*}
+    
+    \nd where \[k(m, \theta_0)=\frac{\beta \rho g (1-\cos\theta_0)}{m} \tag{11}\] is the drag coefficient as a function of the mass and initial release angle, with units $s^{-1}$, and $\omega$ is as previously defined. As mass increases, then, $k$ should decrease, and as mass decreases, $k$ should increase proportional to $\frac{1}{m}$$^{[2]}$. It is important to note that the decay constant is, theoretically, independent of string length. This is as expected, since the drag force should only depend on the topological properties of the bob. 
+    
+    For various given uncertainties, statistical analysis yields that fractional uncertainties are given by 
+    \[
+        \delta z = \sqrt{\sum_{i=1}^{k} \left(\frac{\delta x_i}{x_i}\right)^2}\, z, \tag{12}  
+    \]
+    \nd which may be used to determine period and damping uncertainties for a given $k$ parameters. Lastly, $\chi^2$ fits may be used in determining the quality of the fit:
+    \[
+        \chi^2_r = \sum_{i=1}^{k}\left(\frac{x_i - x_{\text{fit}}}{\sigma_i}  \right)^2. \tag{13}
+    \]
+    \nd For a given set of data and a fit, a small $\chi^2_r$ value $\left(\lesssim 1\right)$ typically implies an ideal fit.
+
+
+
+    
+
+    \vspace{20pt}
+
+    \fontfamily{qag} \selectfont \textbf{Experimental Methods}
+    
+    \fontfamily{qpl} \selectfont To begin pendulum construction, a bag of glass marbles of various sizes was purchased. These were ideal bobs due to their sleek, uniform shape to minimize external force effects, but also due to the range of mass selection. Two marbles were chosen, a small marble of diameter $12.97\pm 0.01\,$mm and mass $2.77\pm 0.01\,$g, and a large marble of diameter $35.36\pm0.01\,$mm and mass $58.75\pm 0.01\,$g. These attributes were measured using a microscale and a caliber ruler. A roll of fine, $2.7\, $kg monofilament fishing line was purchased as string, since monofilament fishing line is stiff, air resistance, and extremely lightweight. 
+    
+    Using an epoxy adhesive, the marbles were glued to the tip ends of two fishing lines of long lengths. Epoxy was used for its strength and smoothness once adhered, and it was assumed that the mass of the epoxy drop was negligible along with the string. To mount the pendulum, an overhang in a ceiling was found and a push pin pinned the end of the line into the drywall so that the line directly hung straight down and was not brushing up against anything. This allowed the pendulum to swing symmetrically and freely, and it was a rare occurrence to observe the marble swinging outside of the plane in which it was released in. The experimental setup is shown in Figure 1.
+    
+    Trials took place in the presence of air damping. It was assumed that the air density was approximately $1.204\pm0.001\,$kg$\,$m$^{-3}$ at $273\pm 1 \,$K $^{[4]}$.
+    
+    \begin{figure}[H]
+        \includegraphics[width=2in]{small mass pic.png}
+    \end{figure}
+
+    \vspace{-170pt}
+
+    \begin{figure}[H]
+        \flushright
+        \includegraphics[width=2in]{large mass pic.png}
+        \caption*{[Figure 1] The experimental setup used in this lab. (Left) The small mass. (Right) The large mass. The geometrical properties of these systems may be found in Table 1.}
+    \end{figure}
+
+    Overall, seven trials were performed for various string lengths, switching between the two marble sizes. Only five trials were selected due to trouble with Tracking mass positions. Each string length was measured with a ruler from the pivot point to the bob center, and the trial data was recorded in Table 1. All of the trials were filmed at 60 frames per second with an iPhone camera until the pendulum's amplitude appeared to be virtually zero or uniform with a small amplitude. Then, each of the videos were format-converted and imported into the `Physlet Tracker' application to be analyzed. The uncertainty in angle tracking was taken to be $\pm5^\circ$, since this is the maximum angle-center of mass deviation which was observed in the automatic tracking of the masses.
+
+
+    \vspace{10pt}
+
+    \fontfamily{qag} \selectfont \textbf{Data Analysis}
+    
+    \fontfamily{qpl} \selectfont Using the `Tracker' application, the pendulum trials were tracked and the data was exported into \verb!.txt! files of two columns: timestamps (s) and angles $\theta(t)$ (deg). An instance of this is shown in Figure 7 (Appendix I). From here, the data was loaded into a python file. The primary task was to fit the data to determine and compare periods with expected values (Equation (5)), and determine the decay constant and compare it with expected values (Equation (11)). Overall, throughout the process of data analysis, linear and nonlinear methods were used to compare the data with theoretical models.
+    
+    To fit the data, an envelope method was used along with a Fast-Fourier Transform (FFT) algorithm. For each data set, \verb!scipy.signal.relargmax! was used to determine the local maxima of the data throughout the timestamps, which was then curve fitted with an exponential model function $e^{-t/\tau}$, where $\tau$ is determined by $k$ as in Equation (4.2). Equivalently, \verb!scipy.signal.relargmin! was used to determine the envelope values of the lower bounds. The \verb!popt, pcov! values were extracted and utilized in the sinusoidal motion fitting equation (4.2), hence determining the decay constant and frequency for the mass in the data. 
+
+    To determine the oscillation period, the angle-dependent data was transformed using the \verb!np.fft.rfft! algorthim. The peak was determined using the \verb!scipy.signal.relargmax!, from which the appropriate oscillation was determined by $N/(60*\,f_{\text{peak}})$. Each of these frequency values were computed from the $\theta(t)$ data arrays by taking the maximum valued-peak of the FFT data, since this resembled the most prominent frequency in the data. 
+
+    The decay constants for each trial, along with the FFT-determined frequency, was plotted and compared with expected values of the damping $k$ defined in equation (11), since $k = 2/\tau$ (Equation (4.2)) and the period (Equations (5), (6)). This fitting process is depicted in Figure 2 for the instance of Trial 3. 
+
+    \begin{figure}[H]
+        \flushleft
+        \includegraphics[width=3.5in]{NEW - Analysis Summary.png}
+        \caption*{[Figure 2] The acquisition of measured decay constant and frequencies via envelope fitting and Fourier-Transforming for Trial 3. (Top) The envelope fit of the data. (Center) The corresponding FFT depiction of the initial data sample. (Bottom) The respective curve fit, implementing the acquired data from enveloping and the FFT-period.}
+    \end{figure}
+    
+    Next, the corresponding damping coefficients were plotted against the expected values as determined by Equation (11). A \verb!curve_fit! was taken out to determine the constant $\beta$, a constant which depends on the topological properties of the mass in the air flow$^{[2]}$. A corresponding $\chi^2_r$ value was obtained, which will be described in the process of the uncertainty propagation.
+    
+    To begin uncertainty propagation, it was important to first consider the determination of curve fitting error. All covariant errors determined by curve fitting were acquired via the function \verb!np.max(np.sqrt(np.diag(pcov[i])))!, where the \verb![i]! indicates the i-th parameter's uncertainty, since this determines the maximum uncertainty given via the curve fit covariant matrix. A $\chi^2$ fit was carried out to determine the quality of each fit using the FFT period and envelope decay parameters, as given in equation (13). This included any data compared against the damping model (Equation 11). It is important to note that there are three sources of error whilst comparing expected and fitted $k$ values: $\delta m$, $\delta \theta_0$, and the curve fititng covariant errors. The uncertainties of the FFT peak transformations were determined by taking the half-width of the peak, using the \verb!scipy.signal.find_peaks! function. Most uncertainties were propagated in relative error (fractional uncertainty), by which error manipulation is given by Equation (12).
+    
+    Lastly, a quantitative estimate of the pendulum asymmetry was completed for each trial, which was done by comparing the average amplitude value of each trial with the zero ($\theta = 0$ axis) of the rotation axis defined in Tracker. 
+    
+    
+
+
+
+    \vspace{10pt}
+
+    \fontfamily{qag} \selectfont \textbf{Results and Discussion}
+    
+    \fontfamily{qpl} \selectfont Overall, seven trials were performed, however two trials were insufficiently Tracked and were discarded. The trial information is found is Table 1.
+
+    \begin{table}[H]
+        \centering
+        \resizebox{9cm}{!}{
+        \begin{tabular}{|c|c|c|c|}
+                \hline
+            Trial & Mass (g) & Mass-Pivot  & Approx. Release \\
+            & $\pm0.01$ & Length (cm) & Angle (deg $^\circ$) \\
+            & & $\pm0.05$ & $\pm 5$ \\
+                \hline
+            1 & $2.77$ & $57.60$ & 8\\
+                \hline
+            2 & $2.77$ & $22.10$& 68\\
+                \hline
+            3 & $58.75$ & $51.00$ & 42\\
+                \hline
+            4 & $58.75$ & $31.00$ & 73\\
+                \hline
+            5 & $2.77$ & $3.10$ & 30\\
+                \hline
+        \end{tabular}
+        }
+        \caption*{[Table 1] Controlled variables regarding each trial. This table includes initial release angles, string lengths, and masses with uncertainties.}
+    \end{table}
+
+        %period analysis
+    First, the periods acquired by the expected relationship equation (5), the Fast-Fourier transform algorithm, and the period approximation given in equation (6) were catalogued in Figure 3 for comparison.
+
+    \begin{figure}[H]
+        \flushleft
+        \includegraphics[width = 3.5in]{NEW - Period Comparison.png}
+        \caption*{[Figure 3] Graphical depiction of the comparison of period values. Errorbars are too small to be seen in the plot. (Black) The expected period, as calculated by Equation (5). (Magenta) The period computed via the FFT algorithm. (Cyan) The period computed by applying the approximation formula (6). The residual plot is shown in the lower-right hand corner.}
+    \end{figure}
+    
+    Due to the small error differences in the residual period, it can be said that the fitting and approximations of the periods were consistent with the theoretical prediction. 
+
+    Drawing attention to the errorbar size, it is important to notice that the Fourier-Transform errorbar in trial 2 is widest, and this may be attributed to nonlinearities caused by drag on the small mass. The mass used in this trial was light, so nonlinear damping effects were expected as in Equation (11). This may be reflected in the trial 4 errorbar. Since the mass used was larger, it would be expected that the drag effects producing nonlinearities in the period are smaller, hence implying thinner FFT-peaks. Otherwise, it is observed that the period is independent of the release angle and bob mass, and instead only string length. 
+
+    %damping talk
+    Now, consider the damping effects of the pendulum. Envelope functions were defined to extract the characteristic time coefficient $\tau$ for each trial, as described in the data analysis. These values were extracted from the curve fitting and included in Table 2 (Appendix II). 
+    
+    One crucial observation to be made from this data is how the larger masses take significantly longer to decay, as depicted by Equation (11). This implies a small damping coefficient $k$. On another hand, it had appeared how the initial release angle affected the decay term. The larger the release angle, the lower the decay time. Once again, this observation is consistent with Equation (11), since as $\theta_0\rightarrow \frac{\pi}{2}$, $|1-\cos\theta_0|\rightarrow 1$. 
+    
+    The acquired damping constant data was plotted along with the expected $k$ value as determined by Equation (11) and is shown in Figures 4 and 5. This data was fitted to determine the constant which characterized the drag in terms of the topological properties of the bob, and this value was determined to be $(125\pm 1)\times 10^{-7} \text{m}^2\, \text{s}$. The respective $\chi^2_r$ value was computed to be $0.93$, which implies that the relationship is a relatively good fit for the data. 
+
+
+
+    \begin{figure}[H]
+        \flushleft
+        \includegraphics[width=3.5in]{NEW-3D Plot.png}
+        \caption*{[Figure 4] Graphical depiction of the damping coefficient relationship between the mass of the bob and the initial release angle. This model compares expected data (shown in blue) in accordance with Equation (11) with measured data obtained from envelope fitting, shown in red.}
+    \end{figure}
+
+    
+    
+    \begin{figure*}[t]
+        \vspace{-30pt}
+    \begin{minipage}[t]{0.3\linewidth}
+        \includegraphics[width=7in]{NEW-Damping Contours.png}
+    \end{minipage}\rule{0.5em}{0pt}%
+    \caption*{[Figure 5] The corresponding contours of the damping coefficient relationship. (Left) The mass-damping contour, as projected from Figure 4 on the $yz$-plane. The respective contours of $k(m,\theta_0)$ are shown. (Right) The initial release angle-damping contour, as projected from Figure 4 on the $xz$-plane. All corresponding errorbars are shown.}
+    \end{figure*}
+
+   
+
+    Shown in Figure 5 are the contours of the projected and expected data from Figure 4 on the $yz$- and $xy$-planes. It can be easily observed how the larger the mass, the more significantly reduced the value of the damping coefficient is. As stated before, $k\propto \frac{1}{m}$. It was noted that the measured data point for Trial 5 is relatively high, and this was be attributed to additional damping terms caused by restoring torques on the fishing line because it was so short. 
+        
+        %curve_fitting
+    Applying the acquired data to a fitting function, such as the one derived in Equation (4.1), curve fits were taken out. An instance of this was previously shown in Figure 2. Each $\chi^2_r$ value was computed and included in Table 2 (Appendix II).
+
+    \vspace{-20pt}
+    \begin{figure}[H]
+        \caption*{[Figure 6] Arising nonlinearities in period value due to the initial release angle and damping. (Top) Trial 1, released in a small-angle approximation. (Bottom) Trial 3, released from an angle where the small angle approximation failed.}
+    \end{figure}
+
+    \vspace{-20pt}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=3in]{NEW - FFT Comparison.png}
+    \end{figure}
+
+    
+
+        
+    For all trials, nonlinearities were observed in the pendulum's dynamics as it swung, however these were most prevalent in cases where the initial release angle $\theta_0$ violated the small angle approximation. These nonlinearities were found to produce small fluctuations in period measurements, which may be directly observed by examining the peaks of the FFT. An instance of this is shown in Figure 6 for Trials 1 and 3. It was found through the comparison of the other four trials that nonlinearities arised for values of $\theta_0>10^\circ \pm 5^\circ$. 
+
+    Lastly, the quantitative estimate of the system's asymmetry was assessed by invoked the process described in the data analysis. This information is included in Table 2 (Appendix II). It was found that the estimate values were very small when compared to the uncertainty of the angle tracking, and therefore errors were omitted because each value was approximately zero anyway. These estimates seemed to be so small as to have no bearing on the behaviour of the system.
+
+    
+
+
+
+
+
+
+    \vspace{10pt}
+
+    \fontfamily{qag} \selectfont \textbf{Conclusions}
+    
+    \fontfamily{qpl} \selectfont 
+    
+    %periods
+    In conclusion, the period of a pendulum is independent of its release angle $\theta_0$, its mass $m$, and the characteristic decay time $\tau$, which is consistent with the theoretical model (Equation (5)). Furthermore, it was found that the approximation $T\approx 2\sqrt{\l}$ is valid for determining period values. 
+    
+    It was concluded, by using a Fast-Fourier transform algorithm, that period fluctuations are more prominent for release angles violating the small angle approximation. For the system constructed in this experiment, the maximum release angle which kept the bob in the small-angle régime was approximately $10^\circ \pm 5^\circ$. This period information is located in Figure 3 and in Table 2 in Appendix II. 
+    
+    %enveloping, FFT
+    After fitting the data and establishing an efficient fitting method, it was verified that pendulum decay is exponential. This is most prevalent in cases where the small angle approximation is valid, as decay times become more unstable as the initial release angle is increased. Due to this exponential decay property, motion of a pendulum may be modelled as in equation (4.2)$^{[1], [2]}$. 
+
+    The determined decay constant fit appropriately to the model $k(m, \theta_0) = (125\pm 1)\times 10^{-7}(\text{m}^2\text{s})\, g\rho/m (1-\cos\theta_0)$, verifying that the drag on the mass was proportional to the cube of the velocity. These relationships between $k$, $m$, and $\theta_0$ are shown in Figures 4 and 5. The respective decay times were then determined by $\tau = 2/k$, and these values may also be found in Table 2 in Appendix II. 
+
+    Due to the quality of the experimental setup, there is minimal asymmetry in the system and in the data acquired from the video footage. These estimates were always often less than one degree, which allowed for an excellent comparison with the theoretical model.
+
+    Lastly, it is recommended to not use $2.7\,$kg fishing line for short pendulums, as a restoring force is established in the line resistance. This increases nonlinearities in the system and the drag-torque imposed on the mass. While tracking in Tracker, it is highly recommended to use a mass of a different color than the wall, else the tracking may become highly chaotic. This is what was noted to change for the next experimental setup, however it is unclear how these variables affect any of the final results.
+
+
+\end{multicols}
+
+\pagebreak 
+
+    \fontfamily{qag} \selectfont
+    \begin{thebibliography}{}\fontfamily{qpl} \selectfont
+        \bibitem{Item} Hong, Z. and Wilson, B., 2023. PHY324 Pendulum Project. \color{blue}\url{https://q.utoronto.ca/courses/297231/files/24358332?module_item_id=4434077} \color{black}
+        \bibitem{Item} Lee, K.R. and Ju, Y.G., 2020. Measurement of resistance coefficients of pendulum motion with balls of various sizes. arXiv preprint arXiv:2002.03796. \color{blue}\url{https://arxiv.org/pdf/2002.03796.pdf}\color{black}
+        \bibitem{Item} Britannica, T. Editors of Encyclopaedia, 2022. Pendulum. Encyclopedia Britannica. \color{blue}\url{https://www.britannica.com/technology/pendulum} \color{black}
+        \bibitem{Item} Viscosity of Air, Dynamic and Kinematic. \color{blue}\url{https://www.engineersedge.com/physics/viscosity_of_air_dynamic_and_kinematic_14483.htm} \color{black}
+        \bibitem{Item} Hayen, J.C., 2015. Projectile Motion with Aerodynamic Drag: The Cubic Law. In 2015 ASEE Annual Conference \& Exposition (pp. 26-1273). \color{blue} \url{https://peer.asee.org/projectile-motion-with-aerodynamic-drag-the-cubic-law}\color{black}
+    \end{thebibliography}
+
+
+    \vspace{20pt}
+
+    \fontfamily{qag} \selectfont \textbf{Appendix I: Large Figures}
+    
+    \fontfamily{qpl} \selectfont
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=5.9in]{tracker example.png}
+        \caption*{[Figure 7] A screenshot of the Tracker progress while acquiring data. Only two data columns were collected: time and the relative angle to the vertical (the axis is hidden).}
+    \end{figure}
+
+\pagebreak 
+
+    \fontfamily{qag} \selectfont \textbf{Appendix II: Data Table of Results}
+
+    \fontfamily{qpl} \selectfont
+
+\begin{table}[H]
+    \centering
+    \resizebox{18.5cm}{!}{
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+        \hline
+    Trial & Mass & Mass-Pivot & Release & Decay & Expected & FFT & Approximate & Estimated & Curve \\
+          &     & Length & Angle & Time & Period & Period & Period & Asymmetry & Fit \\
+          & (g) & (cm) & (deg $^\circ$) & $\tau$ (s)  & $T_{\text{exp}}$ (s) & $T_{\text{FFT}}$ (s) & $T_{\text{approx}}$ (s) & (deg $^\circ$) & $\chi^2_r$ \\ 
+         & $\pm 0.01$ & $\pm0.05$ & $\pm 5$ &  & $\pm 0.01$ &  & $\pm0.01$& ($\times 10^{-14}$) & \\
+        \hline
+    1 & 2.77    & 57.60 & 8     & 90     &   1.53        & 1.52          & 1.52  & 1.56   & 0.14\\
+     &          &       &       & $\pm 2$  &     &  $\pm0.02$    & & &     \\
+        \hline 
+    2 & 2.77    & 22.10 & 68    & 41.9       &     0.96      &  0.92         & 0.95  &  1.64 & 0.93\\
+      &          &       &       & $\pm 0.6$  &    &  $\pm0.09$    & & &     \\
+        \hline
+    3 & 58.75   & 51.00 & 42    & 221 &    1.45     &  1.43         & 1.45  &  1.67  & 2.07\\
+    &          &       &       & $\pm 1$ &    &  $\pm 0.03$   & & &     \\
+        \hline
+    4 & 58.75   & 31.00 & 73    & 363  &  1.15       &  1.14         & 1.14  &  4.19 & 0.89\\
+    &          &       &       & $\pm 4$  &     &  $\pm0.01$    & & &     \\
+        \hline
+    5 & 2.77    & 3.10 & 30     & 4.7  &       0.39      &  0.38         & 0.39  &  0.53 & 8.22\\
+    &          &       &       & $\pm 0.2$  &      & $\pm0.01$     & & &     \\
+        \hline
+    \end{tabular}
+    }
+    \caption*{[Table 2] The data table including every acquired result from the five trials completed. (Col. 1) The trial number. (Col. 2) The mass utilized. (Col. 3) The pendulum string length. (Col. 4) The initial release angle, accounting for Tracking error. (Col. 5) The decay constant, determined by envelope fitting. (Col. 6) The expected period value, from Equation (5). (Col. 7) The period obtained by taking the maximum FFT peak value. (Col. 8) The approximate period, as given in Equation (6). (Col. 9) The estimate asymmetry of the pendulum, as described in the data analysis. Due to the small estimate values, uncertainties were chosen to be omitted in this column for the sake of not neglecting small estimate values. (Col. 10) The $\chi^2_r$ value produced from curve fitting each of the data sets.}
+\end{table}
+
+
+
+
+
+
+\end{document}
