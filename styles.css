@@ -2,6 +2,7 @@
 .body {
     background-color:  rgb(4, 55, 80);
     background-position: relative;
+    -webkit-text-size-adjust: 100%;
   } 
 
 .body::before {
@@ -9,12 +10,11 @@
     position:fixed;
     top: 0; left: 0;
     width: 100vw; height: 100vh;
-    background-image: radial-gradient(rgb(70, 121, 147) 1px, transparent 3px);
-    background-size: 200px 200px;
+    background-image: url(background_image_blue.jpeg);
+    background-size: cover;
     background-repeat: repeat;
-    background-position: var(--before-background-position, 0 0);
-    transform: skewX(10deg);
     z-index: -1;
+    opacity: 0.2;
 }
 
 .name{
@@ -68,11 +68,12 @@
     margin-left: 10px;
     margin-right: 10px;
     background: none;
-    border-radius: 8px;
+    border-radius: 1px;
     transition: .3s ease-in-out;
     padding: 7px;
     border-style:solid;
     border-color:#438cab;
+    text-align: center;
 }
 
 .b1:hover{
@@ -94,17 +95,19 @@
 .b3 {
     color: white;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 22;
-    background-color: #438cab;
+    font-size: 21;
+    border-color: #438cab;
     padding:7px;
     transition-duration: 0.5s;
-    border-radius: 10pt;
+    border-radius: 3pt;
+    border-style: solid;
     margin-left:5px;
 }
 
 .b3:hover {
-    background-color:transparent;
+    background-color: #438cab;
     color:orange;
+    border-color: orange;
 }
 
 .b2:hover{
@@ -126,7 +129,6 @@
 }
 
 .current-pagetext{
-    font-style: italic;
     background-color: #438cab;
     color: orange;
     border-color: orange;
@@ -380,19 +382,18 @@
 
 
 
-
-.image1 {
+.image {
     position: relative;
     overflow: hidden;
 }
-.image1::before{
+.image::before{
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(feynman.png);
+    background-image: var(--bg-img);
     background-size: cover;
     background-position: center;
     z-index: 0;
@@ -401,716 +402,8 @@
     max-height: 60px;
     transition: max-height 2s;
 }
-.course-container.open .image1::before {opacity: 0.2; max-height: 1000px;}
 
+.course-container.open .image::before {opacity: 0.2; max-height: 1000px;}
 
 
-.image2 {
-    position: relative;
-    overflow: hidden;
-}
-.image2::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(penrose.png);
-    background-size:cover;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
 
-.course-container.open  .image2::before {opacity: 0.2; max-height: 1000px}
-
-
-
-
-.image3 {
-    position: relative;
-    overflow: hidden;
-}
-.image3::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(lorentz.png);
-    background-size: 100%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image3::before {opacity: 0.2; max-height: 1000px;}
-
-
-
-.image4 {
-    position: relative;
-    overflow: hidden;
-}
-.image4::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(scattering.png);
-    background-size: 100%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image4::before {opacity: 0.2; max-height: 1000px}
-
-
-
-.image5 {
-    position: relative;
-    overflow: hidden;
-}
-.image5::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(boundary.png);
-    background-size: 100%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open  .image5::before {opacity: 0.2; max-height: 1000px}
-
-
-
-
-.image6 {
-    position: relative;
-    overflow: hidden;
-}
-.image6::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(becondensate.png);
-    background-size: 100%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image6::before {opacity: 0.2; max-height: 1000px}
-
-
-.image7 {
-    position: relative;
-    overflow: hidden;
-}
-.image7::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(emwave.png);
-    background-size: 100%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open  .image7::before {opacity: 0.2; max-height: 1000px}
-
-
-
-.image8 {
-    position: relative;
-    overflow: hidden;
-}
-.image8::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(bubble.png);
-    background-size: 100%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image8::before {opacity: 0.2; max-height: 1000px}
-
-
-
-
-.image9 {
-    position: relative;
-    overflow: hidden;
-}
-.image9::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(fft.png);
-    background-size: 100%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image9::before {opacity: 0.2; max-height: 1000px}
-
-
-
-.image10 {
-    position: relative;
-    overflow: hidden;
-}
-.image10::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(computational.png);
-    background-size: 120%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 1.9s;
-}
-.course-container.open .image10::before {opacity: 0.2; max-height: 1000px}
-
-
-
-.image11 {
-    position: relative;
-    overflow: hidden;
-}
-.image11::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(electronics.png);
-    background-size: 120%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    transition-duration: 1s;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open  .image11::before {opacity: 0.2; max-height: 1000px}
-
-
-
-
-.image12 {
-    position: relative;
-    overflow: hidden;
-}
-.image12::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(geo.png);
-    background-size: 120%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image12::before {opacity: 0.2; max-height: 1000px}
-
-
-
-
-.image13 {
-    position: relative;
-    overflow: hidden;
-}
-.image13::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(hydrogen.png);
-    background-size: 120%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open  .image13::before {opacity: 0.2; max-height: 1000px}
-
-
-
-
-
-.image14 {
-    position: relative;
-    overflow: hidden;
-}
-.image14::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(action.png);
-    background-size: 120%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image14::before {opacity: 0.2; max-height: 1000px}
-
-
-
-
-.image15 {
-    position: relative;
-    overflow: hidden;
-}
-.image15::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(dipole.png);
-    background-size: 120%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image15::before {opacity: 0.2; max-height: 1000px}
-
-
-
-.image16 {
-    position: relative;
-    overflow: hidden;
-}
-.image16::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(thermal.png);
-    background-size: 120%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image16::before {opacity: 0.2; max-height: 1000px}
-
-
-
-.image17 {
-    position: relative;
-    overflow: hidden;
-}
-.image17::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(schrodinger.png);
-    background-size: 120%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image17::before {opacity: 0.2; max-height: 1000px}
-
-
-
-
-.image18 {
-    position: relative;
-    overflow: hidden;
-}
-.image18::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(oscillator.png);
-    background-size: 120%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image18::before {opacity: 0.2; max-height: 1000px}
-
-
-
-.image18 {
-    position: relative;
-    overflow: hidden;
-}
-.image18::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(oscillator.png);
-    background-size: 120%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image18::before {opacity: 0.2; max-height: 1000px}
-
-
-
-.image19 {
-    position: relative;
-    overflow: hidden;
-}
-.image19::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(entropy.png);
-    background-size: 120%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image19::before {opacity: 0.2; max-height: 1000px}
-
-
-
-
-.image20 {
-    position: relative;
-    overflow: hidden;
-}
-.image20::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(solenoid.png);
-    background-size: 120%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image20::before {opacity: 0.2; max-height: 1000px}
-
-
-
-
-.image21 {
-    position: relative;
-    overflow: hidden;
-}
-.image21::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(lab.png);
-    background-size: 120%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image21::before {opacity: 0.2; max-height: 1000px}
-
-
-
-
-.image22 {
-    position: relative;
-    overflow: hidden;
-}
-.image22::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(partial.png);
-    background-size: 120%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image22::before {opacity: 0.2; max-height: 1000px}
-
-
-
-.image23 {
-    position: relative;
-    overflow: hidden;
-}
-.image23::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(complex.png);
-    background-size: 120%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image23::before {opacity: 0.2; max-height: 1000px}
-
-
-
-
-
-.image24 {
-    position: relative;
-    overflow: hidden;
-}
-.image24::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(ode.png);
-    background-size: 120%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image24::before {opacity: 0.2; max-height: 1000px}
-
-
-
-.image25 {
-    position: relative;
-    overflow: hidden;
-}
-.image25::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(balls.png);
-    background-size: 120%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image25::before {opacity: 0.2; max-height: 1000px}
-
-
-
-
-
-.image26 {
-    position: relative;
-    overflow: hidden;
-}
-.image26::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(jordan.png);
-    background-size: 120%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image26::before {opacity: 0.2; max-height: 1000px}
-
-.image27 {
-    position: relative;
-    overflow: hidden;
-}
-.image27::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(linear.png);
-    background-size: 120%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image27::before {opacity: 0.2; max-height: 1000px}
-
-
-
-
-.image28 {
-    position: relative;
-    overflow: hidden;
-}
-.image28::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(ed.png);
-    background-size: 120%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image28::before {opacity: 0.2; max-height: 1000px}
-
-
-
-.image29 {
-    position: relative;
-    overflow: hidden;
-}
-.image29::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(fam.png);
-    background-size: 120%;
-    background-position: center;
-    z-index: 0;
-    border-radius: 10px;
-    opacity: 1;
-    max-height: 60px;
-    transition: max-height 2s;
-}
-.course-container.open .image29::before {opacity: 0.2; max-height: 1000px}

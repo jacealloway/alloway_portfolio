@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1745642662 "/Users/jacealloway/Desktop/python/jace_portfolio/projecttyped.tex" "/Users/jacealloway/Desktop/python/jace_portfolio/projecttyped.pdf" "projecttyped" 1745643223
+["pdflatex"] 1745642662 "/Users/jacealloway/Desktop/python/jace_portfolio/projecttyped.tex" "/Users/jacealloway/Desktop/python/jace_portfolio/projecttyped.pdf" "projecttyped" 1745643366
   "/Users/jacealloway/Desktop/python/jace_portfolio/final-circuit.JPG" 0 -1 0 ""
   "/Users/jacealloway/Desktop/python/jace_portfolio/final-initial.png" 0 -1 0 ""
   "/Users/jacealloway/Desktop/python/jace_portfolio/final-justgain.JPG" 0 -1 0 ""
@@ -263,9 +263,9 @@
   "projecttyped.out" 1745642671 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   "projecttyped.tex" 1743819005 17046 0087d68e7ce5d28b5c55d52441f9f9f2 ""
   (generated)
-  "projecttyped.pdf"
   "/Users/jacealloway/Desktop/python/jace_portfolio/projecttyped.log"
-  "projecttyped.log"
-  "projecttyped.aux"
-  "projecttyped.out"
   "/Users/jacealloway/Desktop/python/jace_portfolio/projecttyped.pdf"
+  "projecttyped.pdf"
+  "projecttyped.out"
+  "projecttyped.aux"
+  "projecttyped.log"
