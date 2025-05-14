@@ -76,253 +76,255 @@
         <br> 
         <br>
 
-        <div class="fade-div">
-            <div class="container1" style="background-image: linear-gradient(to left,  transparent,  rgb(14, 91, 130))">
-                <div class="dropdown">
-                    <button class="dropbtn">
-                        <strong>Planning Centre Data Processing</strong>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="workflowspeople_fetch.py" target="_blank">
-                            Workflows Code 1 (Fetch)
-                        </a>
-                        <a href="workflow_data_export.py" target="_blank">
-                            Workflows Code 2 (Compile)
-                        </a>
-                        <a href="teamsservices_fetch.py" target="_blank">
-                            Teams Code
-                        </a>
-                        <a href="connectgroup_fetch.py" target="_blank">
-                            Groups Code
-                        </a>
-                        <a href="gapi_pushdata.py" target="_blank">
-                            Google API Access Code
-                        </a>
-                        <a href="cronjob_script.txt" target="_blank">
-                            Cronjob Script
-                        </a>
+        <div class="projectlist">
+            <div class="fade-div">
+                <div class="container1 cont-bg">
+                    <div class="dropdown">
+                        <button class="dropbtn">
+                            <strong>Planning Centre Data Processing</strong>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="workflowspeople_fetch.py" target="_blank">
+                                Workflows Code 1 (Fetch)
+                            </a>
+                            <a href="workflow_data_export.py" target="_blank">
+                                Workflows Code 2 (Compile)
+                            </a>
+                            <a href="teamsservices_fetch.py" target="_blank">
+                                Teams Code
+                            </a>
+                            <a href="connectgroup_fetch.py" target="_blank">
+                                Groups Code
+                            </a>
+                            <a href="gapi_pushdata.py" target="_blank">
+                                Google API Access Code
+                            </a>
+                            <a href="cronjob_script.txt" target="_blank">
+                                Cronjob Script
+                            </a>
+                        </div>
+                        <div class="ptext-container" style="margin-left: 4%; padding-top: 10pt; font-size: 20; width:500pt">
+                            Software programmed in Python using 'requests' to fetch JSON data from the Planning Centre website using an API key. 
+                            Data is processed into .csv files and temporarily saved. New fetches overwrite old data since nested dictionaries changes. 
+                            The .csv files are pushed through the Google client using the Google-Python API and a Google services account. 
+                            The files are read into a Google Sheets file with the .csv headers. 
+                            Google Lookerstudio imports the data automatically and displays it according to the front end filters.
+                        </div>
                     </div>
-                    <div class="ptext-container" style="margin-left: 4%; padding-top: 10pt; font-size: 20; width:500pt">
-                        Software programmed in Python using 'requests' to fetch JSON data from the Planning Centre website using an API key. 
-                        Data is processed into .csv files and temporarily saved. New fetches overwrite old data since nested dictionaries changes. 
-                        The .csv files are pushed through the Google client using the Google-Python API and a Google services account. 
-                        The files are read into a Google Sheets file with the .csv headers. 
-                        Google Lookerstudio imports the data automatically and displays it according to the front end filters.
+                    <div class="project-image" style="margin-left:80%; margin-top: -17%; z-index: 2;">
+                        <img src="looker.png" width="490pt" style="border-color:orange; border-style: solid; border-width: 2pt;">  
                     </div>
-                </div>
-                <div class="project-image" style="margin-left:80%; margin-top: -17%; z-index: 2;">
-                    <img src="looker.png" width="490pt" style="border-color:orange; border-style: solid; border-width: 2pt;">  
                 </div>
             </div>
-        </div>
-        <div class="fade-div">
-            <div class="container2">
-                <div class="dropdown">
-                    <button class="dropbtn">
-                        <strong>Sudoku Solver</strong>
-                    </button> 
-                    <div class="dropdown-content">
-                        <a href="sud-interface.py" target="_blank">
-                            Code
-                        </a>
-                        <a>
-                            Demo (next push)
-                        </a>
+            <div class="fade-div">
+                <div class="container2">
+                    <div class="dropdown">
+                        <button class="dropbtn">
+                            <strong>Sudoku Solver</strong>
+                        </button> 
+                        <div class="dropdown-content">
+                            <a href="sud-interface.py" target="_blank">
+                                Code
+                            </a>
+                            <a>
+                                Demo (next push)
+                            </a>
+                        </div>
+                        <div class="ptext-container" style="margin-left: 4%; padding-top: 10pt; font-size: 20; width:500pt">
+                            Backtracking algorithm implemented in Python. An input 9x9 grid is given from which the code auto-fills a solution. 
+                            This is taken out using a validator for each empty grid cell. If a cell value returns invalid, it is wiped and the previous cell is re-examined. The code continues until each cell returns valid. History arrays are stored for each cell to track inputs.
+                            Front end interface was created in Pygame. 
+                        </div>
                     </div>
-                    <div class="ptext-container" style="margin-left: 4%; padding-top: 10pt; font-size: 20; width:500pt">
-                        Backtracking algorithm implemented in Python. An input 9x9 grid is given from which the code auto-fills a solution. 
-                        This is taken out using a validator for each empty grid cell. If a cell value returns invalid, it is wiped and the previous cell is re-examined. The code continues until each cell returns valid. History arrays are stored for each cell to track inputs.
-                        Front end interface was created in Pygame. 
+                    <div class="project-image" style="margin-left:82%; margin-top: -20%; z-index: 2;">
+                        <img src="sudoku.png" width="350pt" style="border-color:orange; border-style: solid; border-width: 2pt;">  
                     </div>
-                </div>
-                <div class="project-image" style="margin-left:82%; margin-top: -20%; z-index: 2;">
-                    <img src="sudoku.png" width="350pt" style="border-color:orange; border-style: solid; border-width: 2pt;">  
                 </div>
             </div>
-        </div>
-        <div class="fade-div">
+            <div class="fade-div">
 
-            <div class="container2" style="background-image: linear-gradient(to left,  transparent,  rgb(20, 99, 139))">
-                <div class="dropdown" style="width: fit-content">
-                    <button class="dropbtn">
-                        <strong>Brownian Motion Model</strong>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="Lab5_Q1.py" target="_blank">
-                            Model Code 
-                        </a>
-                        <a href="Lab5_Q2.py" target="_blank">
-                            Model with Anchoring
-                        </a>
-                        <a>
-                            Demo (next push)
-                        </a>
+                <div class="container2 cont-bg" >
+                    <div class="dropdown" style="width: fit-content">
+                        <button class="dropbtn">
+                            <strong>Brownian Motion Model</strong>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="Lab5_Q1.py" target="_blank">
+                                Model Code 
+                            </a>
+                            <a href="Lab5_Q2.py" target="_blank">
+                                Model with Anchoring
+                            </a>
+                            <a>
+                                Demo (next push)
+                            </a>
+                        </div>
+                        <div class="ptext-container"style="margin-left: 4%; padding-top: 10pt; font-size: 20; width:500pt; overflow: hidden">
+                            Brownian motion model written in Python. A 'random walk' is a particle's modeled behaviour. In two-dimensons, the particle has a 25% chance of moving North, East, South, or West. Over time, particle's become 'anchored' to a boundary or a secondary anchored particle. 
+                        </div> 
                     </div>
-                    <div class="ptext-container"style="margin-left: 4%; padding-top: 10pt; font-size: 20; width:500pt; overflow: hidden">
-                        Brownian motion model written in Python. A 'random walk' is a particle's modeled behaviour. In two-dimensons, the particle has a 25% chance of moving North, East, South, or West. Over time, particle's become 'anchored' to a boundary or a secondary anchored particle. 
-                    </div> 
-                </div>
-                <div class="project-image" style="margin-left:80%; margin-top: -19%; z-index: 2;">
-                    <img src="brownian.png" width="400pt" style="border-color:orange; border-style: solid; border-width: 2pt;">  
-                </div>
-            </div>
-        </div>
-        <div class="fade-div">
-            <div class="container3">
-                <div class="dropdown" style="width: fit-content">
-                    <button class="dropbtn">
-                        <strong>Motion in a Central Field</strong>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="Motion in a Central Field - Jace Alloway.pdf" target="_blank">
-                            Paper
-                        </a>
-                    </div>
-                    <div class="ptext-container" style="margin-left: 4%; padding-top: 10pt; font-size: 20; width:500pt">
-                        A paper written in LaTeX for the purpose of a math textbook author job application. The paper contains internal references/links, font changes and decoration, headers/footers, and image wrapping. All figures, plots, and images were created using the PGF-TikZ package.
+                    <div class="project-image" style="margin-left:80%; margin-top: -19%; z-index: 2;">
+                        <img src="brownian.png" width="400pt" style="border-color:orange; border-style: solid; border-width: 2pt;">  
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="fade-div">
+                <div class="container3">
+                    <div class="dropdown" style="width: fit-content">
+                        <button class="dropbtn">
+                            <strong>Motion in a Central Field</strong>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="Motion in a Central Field - Jace Alloway.pdf" target="_blank">
+                                Paper
+                            </a>
+                        </div>
+                        <div class="ptext-container" style="margin-left: 4%; padding-top: 10pt; font-size: 20; width:500pt">
+                            A paper written in LaTeX for the purpose of a math textbook author job application. The paper contains internal references/links, font changes and decoration, headers/footers, and image wrapping. All figures, plots, and images were created using the PGF-TikZ package.
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <div class="fade-div">
-            <div class="container2" style="background-image: linear-gradient(to left,  transparent,  rgb(20, 99, 139)); height: 305px;">
-                <div class="dropdown" style="width: fit-content;">
-                    <button class="dropbtn">
-                        <strong>GEOS-Chem 14.0.0 CO Divergence-Governed Regridding Scheme</strong>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="geos_regridding_alloway_2024.pdf" target="_blank">
-                            Paper
-                        </a>
-                        <a href="regrid-analysis-tmp.py" target="_blank">
-                            Regrid Testing Code 1
-                        </a>
-                        <a href="regridtesting.py" target="_blank">
-                            Regrid Testing Code 2
-                        </a>
-                        <a href="animationtesting.py" target="_blank">
-                            Animation Testing Code
-                        </a>
-                        <a>
-                            Demo (next push)
-                        </a>
-                        <a href="https://github.com/geoschem/geos-chem" target="_blank">
-                            GEOS-Chem Repo
-                        </a>
+            <div class="fade-div">
+                <div class="container2 cont-bg" style="height: 305px;">
+                    <div class="dropdown" style="width: fit-content;">
+                        <button class="dropbtn">
+                            <strong>GEOS-Chem 14.0.0 CO Divergence-Governed Regridding Scheme</strong>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="geos_regridding_alloway_2024.pdf" target="_blank">
+                                Paper
+                            </a>
+                            <a href="regrid-analysis-tmp.py" target="_blank">
+                                Regrid Testing Code 1
+                            </a>
+                            <a href="regridtesting.py" target="_blank">
+                                Regrid Testing Code 2
+                            </a>
+                            <a href="animationtesting.py" target="_blank">
+                                Animation Testing Code
+                            </a>
+                            <a>
+                                Demo (next push)
+                            </a>
+                            <a href="https://github.com/geoschem/geos-chem" target="_blank">
+                                GEOS-Chem Repo
+                            </a>
+                        </div>
+                        <div class="ptext-container" style="margin-left: 4%; padding-top: 10pt; font-size: 20; width:440pt;">
+                            Analysis of the GEOS-Chem climate model developed by Harvard software engineers. 
+                            Purpose of this research was to investigate the re-gridding process of the model, since vertical transport information of various chemical tracers is lost in the Euclidean computations.
+                            That is, there is less upward/downward vertical motions (e.g. convections) in the model than expected. A CO tracer was use for test purposes. 
+                            The initial regridding process was to average out values over cells. Instead, our approach was to implement an algorithm to regrid based on the potential function. 
+                            This was done using Climate Data Operators (CDOs) in Perl, then re-exported into a new set of NetCDF data to be read into file by the model.
+                        </div>
                     </div>
-                    <div class="ptext-container" style="margin-left: 4%; padding-top: 10pt; font-size: 20; width:440pt;">
-                        Analysis of the GEOS-Chem climate model developed by Harvard software engineers. 
-                        Purpose of this research was to investigate the re-gridding process of the model, since vertical transport information of various chemical tracers is lost in the Euclidean computations.
-                        That is, there is less upward/downward vertical motions (e.g. convections) in the model than expected. A CO tracer was use for test purposes. 
-                        The initial regridding process was to average out values over cells. Instead, our approach was to implement an algorithm to regrid based on the potential function. 
-                        This was done using Climate Data Operators (CDOs) in Perl, then re-exported into a new set of NetCDF data to be read into file by the model.
+                    <div class="project-image" style="margin-left:78%; margin-top: -23%; z-index: 2;">
+                        <img src="carbonevo.png" width="500pt" style="border-color:orange; border-style: solid; border-width: 2pt;">  
                     </div>
-                </div>
-                <div class="project-image" style="margin-left:78%; margin-top: -23%; z-index: 2;">
-                    <img src="carbonevo.png" width="500pt" style="border-color:orange; border-style: solid; border-width: 2pt;">  
                 </div>
             </div>
-        </div>
-        <div class="fade-div">
-            <div class="container2" style="height:150px">
-                <div class="dropdown" style="width: fit-content">
-                    <button class="dropbtn">
-                        <strong>Symbolic General Relativity Tensor Computation</strong>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="functions.py" target="_blank">
-                            Python Class File
-                        </a>
-                        <a href="compute.py" target="_blank">
-                            Code Instance
-                        </a>
+            <div class="fade-div">
+                <div class="container2" style="height:150px">
+                    <div class="dropdown" style="width: fit-content">
+                        <button class="dropbtn">
+                            <strong>Symbolic General Relativity Tensor Computation</strong>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="functions.py" target="_blank">
+                                Python Class File
+                            </a>
+                            <a href="compute.py" target="_blank">
+                                Code Instance
+                            </a>
+                        </div>
+                        <div class="ptext-container" style="margin-left: 4%; padding-top: 10pt; font-size: 20; width:400pt">
+                            General relativity tensor computations can make you hate your life. Unless you enjoy hand-calculating 256 entries for the Riemann tensor (*ahem* masochist), I invite you to ignore this. Why not just get some code to do it for us??!
+                        </div>
                     </div>
-                    <div class="ptext-container" style="margin-left: 4%; padding-top: 10pt; font-size: 20; width:400pt">
-                        General relativity tensor computations can make you hate your life. Unless you enjoy hand-calculating 256 entries for the Riemann tensor (*ahem* masochist), I invite you to ignore this. Why not just get some code to do it for us??!
+                    <div class="project-image" style="margin-left:75%; margin-top: -13%; z-index: 2;">
+                        <img src="curvature tensor.png" width="500pt" style="border-color:orange; border-style: solid; border-width: 2pt;">  
                     </div>
-                </div>
-                <div class="project-image" style="margin-left:75%; margin-top: -13%; z-index: 2;">
-                    <img src="curvature tensor.png" width="500pt" style="border-color:orange; border-style: solid; border-width: 2pt;">  
                 </div>
             </div>
-        </div>
-        <div class="fade-div">
-            <div class="container2" style="background-image: linear-gradient(to left,  transparent,  rgb(20, 99, 139));">
-                <div class="dropdown" style="width: fit-content;">
-                    <button class="dropbtn">
-                        <strong>Pendulum Analysis</strong>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="pendulum.pdf" target="_blank">
-                            Paper
-                        </a>
-                        <a href="pendulum.tex" target="_blank">
-                            LaTeX (download)
-                        </a>
-                        <a href="code_1.py" target="_blank">
-                            Code (yes it's gross)
-                        </a>
+            <div class="fade-div">
+                <div class="container2 cont-bg">
+                    <div class="dropdown" style="width: fit-content;">
+                        <button class="dropbtn">
+                            <strong>Pendulum Analysis</strong>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="pendulum.pdf" target="_blank">
+                                Paper
+                            </a>
+                            <a href="pendulum.tex" target="_blank">
+                                LaTeX (download)
+                            </a>
+                            <a href="code_1.py" target="_blank">
+                                Code (yes it's gross)
+                            </a>
+                        </div>
+                        <div class="ptext-container" style="margin-left: 4%; padding-top: 10pt; font-size: 20; width:400pt">
+                            Rigorous analysis of a home-made marble pendulum. Nonlinear computational analysis with the addition of wind-drag and ODE nonlinearity (in the EOM). 
+                            Goal was to compute the drag coefficient on the marble(s). Comparison with expected results (e.g. period).
+                        </div>
                     </div>
-                    <div class="ptext-container" style="margin-left: 4%; padding-top: 10pt; font-size: 20; width:400pt">
-                        Rigorous analysis of a home-made marble pendulum. Nonlinear computational analysis with the addition of wind-drag and ODE nonlinearity (in the EOM). 
-                        Goal was to compute the drag coefficient on the marble(s). Comparison with expected results (e.g. period).
+                    <div class="project-image" style="margin-left:77%; margin-top: -18%; z-index: 2;">
+                        <img src="pendulum.png" width="500pt" style="border-color:orange; border-style: solid; border-width: 2pt;">  
                     </div>
-                </div>
-                <div class="project-image" style="margin-left:77%; margin-top: -18%; z-index: 2;">
-                    <img src="pendulum.png" width="500pt" style="border-color:orange; border-style: solid; border-width: 2pt;">  
                 </div>
             </div>
-        </div>
-        <div class="fade-div">
-            <div class="container2" style="height:  240px">
-                <div class="dropdown" style="width: fit-content">
-                    <button class="dropbtn">
-                        <strong>Time Series Chirp Analysis of a Binary Black Hole Merger Signal</strong>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="Alloway_Jace_PHY408Report.pdf" target="_blank">
-                            Paper
-                        </a>
-                        <a href="408final.tex" target="_blank">
-                            LaTeX (download)
-                        </a>
-                        <a href="phy408reportcode.py" target="_blank">
-                            Code
-                        </a>
+            <div class="fade-div">
+                <div class="container2" style="height:  240px">
+                    <div class="dropdown" style="width: fit-content">
+                        <button class="dropbtn">
+                            <strong>Time Series Chirp Analysis of a Binary Black Hole Merger Signal</strong>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="Alloway_Jace_PHY408Report.pdf" target="_blank">
+                                Paper
+                            </a>
+                            <a href="408final.tex" target="_blank">
+                                LaTeX (download)
+                            </a>
+                            <a href="phy408reportcode.py" target="_blank">
+                                Code
+                            </a>
+                        </div>
+                        <div class="ptext-container" style="margin-left: 4%; padding-top: 10pt; font-size: 20; width:400pt">
+                            Any massive object in the universe exerts perturbations in spacetime. This is more noticable with the larger the mass. 
+                            Black holes may orbit and establish "ripples" in spacetime until they merge. These waves may be measured (LIGO) and converted to a frequency spectrum.
+                            This project aims to determine the rate of frequency change (chirp rate) using a linear chirp transformation on the time series in the form of a FFT algorithm.
+                        </div>
                     </div>
-                    <div class="ptext-container" style="margin-left: 4%; padding-top: 10pt; font-size: 20; width:400pt">
-                        Any massive object in the universe exerts perturbations in spacetime. This is more noticable with the larger the mass. 
-                        Black holes may orbit and establish "ripples" in spacetime until they merge. These waves may be measured (LIGO) and converted to a frequency spectrum.
-                        This project aims to determine the rate of frequency change (chirp rate) using a linear chirp transformation on the time series in the form of a FFT algorithm.
+                    <div class="project-image" style="margin-left:73%; margin-top: -23%; z-index: 2;">
+                        <img src="chirp. spec.png" width="400pt" style="border-color:orange; border-style: solid; border-width: 2pt;">  
                     </div>
-                </div>
-                <div class="project-image" style="margin-left:73%; margin-top: -23%; z-index: 2;">
-                    <img src="chirp. spec.png" width="400pt" style="border-color:orange; border-style: solid; border-width: 2pt;">  
                 </div>
             </div>
-        </div>
-        <div class="fade-div">
-            <div class="container2" style="background-image: linear-gradient(to left,  transparent,  rgb(20, 99, 139));">
-                <div class="dropdown" style="width: fit-content">
-                    <button class="dropbtn">
-                        <strong>Analog Distortion</strong>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="phy405final.pdf" target="_blank">
-                            Paper
-                        </a>
-                        <a href="projecttyped.tex" target="_blank">
-                            LaTeX (download)
-                        </a>
+            <div class="fade-div">
+                <div class="container2 cont-bg">
+                    <div class="dropdown" style="width: fit-content">
+                        <button class="dropbtn">
+                            <strong>Analog Distortion</strong>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="phy405final.pdf" target="_blank">
+                                Paper
+                            </a>
+                            <a href="projecttyped.tex" target="_blank">
+                                LaTeX (download)
+                            </a>
+                        </div>
+                        <div class="ptext-container" style="margin-left: 4%; padding-top: 10pt; font-size: 20; width:400pt">
+                            Musicians use distortion to cut through a mix. Though this may be taken out digitally (e.g. a DAW), there is often associated latency or software bugs, not making for a good live tool.
+                            This project aimed to construct my own analog distortion circuit using a non-inverting operational amplifier and some diodes. A tone and volume knob were also added using potentiometers.
+                        </div>
                     </div>
-                    <div class="ptext-container" style="margin-left: 4%; padding-top: 10pt; font-size: 20; width:400pt">
-                        Musicians use distortion to cut through a mix. Though this may be taken out digitally (e.g. a DAW), there is often associated latency or software bugs, not making for a good live tool.
-                        This project aimed to construct my own analog distortion circuit using a non-inverting operational amplifier and some diodes. A tone and volume knob were also added using potentiometers.
+                    <div class="project-image" style="margin-left:73%; margin-top: -19%; z-index: 2;">
+                        <img src="distortion.png" width="400pt" style="border-color:orange; border-style: solid; border-width: 2pt;">  
                     </div>
-                </div>
-                <div class="project-image" style="margin-left:73%; margin-top: -19%; z-index: 2;">
-                    <img src="distortion.png" width="400pt" style="border-color:orange; border-style: solid; border-width: 2pt;">  
                 </div>
             </div>
         </div>

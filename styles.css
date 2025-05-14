@@ -199,11 +199,22 @@
 }
 
 
+
+
+.projectlist {
+    margin-left: 10vw;
+    margin-right: 10vw;
+    align-items: center;
+}
+
+.cont-bg {
+    background-image: linear-gradient(to left,  transparent,  rgb(14, 91, 130));
+}
+
 .container1 {
     padding: 8px;
     width:1200px;
     height:230px;
-    margin-left:150px;
     margin-bottom:20px;
     transition-duration: 2s;
     /* border-style: dashed;
@@ -214,7 +225,6 @@
     padding: 8px;
     width:1200px;
     height:200px;
-    margin-left:150px;
     margin-bottom:20px;
     transition-duration: 1s;
     /* border-style: dashed;
@@ -227,7 +237,6 @@
     padding:8px;
     width:1200px;
     height:170px;
-    margin-left:150px;
     margin-bottom:20px;
     transition-duration: 1s;
     /* border-style: dashed;
@@ -235,7 +244,6 @@
     align-items: center;
 
 }
-
 
 
 
@@ -299,21 +307,25 @@
 }
 
 
+.courselist {
+    display: inline-block; 
+    position: relative;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    align-items: center;
+}
 
 
 .course-container {
     position: relative;
-    width:1200px;
-    margin-left: 210px;
-    margin-right: 300px;
-    margin-bottom: 20px;
+    margin-bottom: 1vh;
     opacity:1;
     border-color: #ffffff00; 
     border-style: solid; 
-    border-radius: 10px; 
-    padding: 10px;
+    border-radius: 1vh; 
+    padding: 1vh;
     max-height: 100px;
-    height: auto;
+    /* height: auto; */
     transition: max-height 2s;
     overflow: hidden;
     opacity: 0;
@@ -330,7 +342,7 @@
     transition-duration: 2s;
     opacity: 0;
     max-height:0;
-    height: fit-content;
+    height:auto;
     color: white;
     /* border-style: dashed;
     border-color: white; */
@@ -346,11 +358,11 @@
     font-size: 18;
     border-style: dashed;
     border-color: white;
-    padding: 20px;
-    margin: 2px;
+    padding: 2vh;
+    margin: 0.5vh;
     flex: 1;
     border-style: solid;
-    border-radius: 10px;
+    border-radius: 1vh;
     border-color:  #438cab;
     text-align: center;
     background-color: rgb(4, 55, 80);
@@ -362,8 +374,8 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 22;
     background-color: none;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 2vh;
+    border-radius: 0.5vh;
     transition-duration: 0.5s;
     z-index:1;
     opacity:0;
@@ -375,10 +387,10 @@
 
 .course-container:hover {border-color:  #438cab;}
 
-.course-container.open {border-color:  #438cab; max-height: 1000px; height: fit-content; transition-duration: 1s;}
+.course-container.open {border-color:  #438cab; max-height: 1000px; height: fit-content; transition-duration: 2s;}
 .course-container.open .assignment-boxes {opacity: 1; max-height: 500px} 
 .course-container.open .course-description {opacity: 1;}
-.assignment-boxes a:hover {opacity: 1; color:orange; background-color: #438cab;  font-size: 20; border-color: orange}
+.assignment-boxes a:hover {opacity: 1; color:orange; background-color: #438cab;  font-size: 19; border-color: orange;}
 
 
 

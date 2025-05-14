@@ -75,16 +75,3 @@ faders.forEach(fader => {
 
 
 
-
-// window.addEventListener('scroll', () => {
-//     const scrollTop = window.scrollY; // Get the current vertical scroll position
-    
-//     offsetX = -scrollTop * 0.01; // Horizontal movement control
-//     offsetY = -scrollTop * 0.005; // Vertical movement control (optional)
-
-
-//     // Apply the background position
-//     document.body.style.setProperty('--before-background-position', `${offsetX}px ${offsetY}px`);
-
-//   });
-
